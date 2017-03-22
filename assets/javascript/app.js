@@ -50,18 +50,18 @@ function countdown() {
 //   called to begin the game (which begins when they click the 'start' button)
 function start() {
   // todo: start the timer (setInterval) using the countdown function as a callback
-
+  	countdown()
   // todo: prepend html to the sub-wrapper element in the dom to show an initial countdown time
   //   html content that looks like this:
   //   <h2>Time Remaining: <span id='counter-number'>" + counter + "</span> Seconds</h2>
-
+  $("#sub-wrapper").prepend("<h2>Time Remaining: <span id='counter-number'>" + counter + "</span> Seconds</h2>")
   // todo: remove the #start button element from the dom (since the game is now starting)
 
   // loop thru the questions array
   for (var i = 0; i < questions.length; i++) {
     
     // todo: append html to the dom's #quiz-area that displays the question
-
+    $("#quiz-area").append(questions[i].question.length);
     // loop thru the answers in the question
     for (var j = 0; j < questions[i].answers.length; j++) {
 
@@ -73,7 +73,7 @@ function start() {
   }
 
   // todo: append html to the dom's #quiz-area that displays a done button with an id='done'
-  $("#quiz-area").append("<h2>Time's Up!</h2>");
+  $("#start").append("<h2>Time's Up!</h2>");
 }
 
 // purpose of this function:
@@ -110,6 +110,7 @@ function done() {
 
   // todo: call function to display the user's quiz results
 
+  results()
 }
 
 // purpose of this function:
@@ -117,6 +118,7 @@ function done() {
 function result() {
 
   // todo: stop the timer using clearInterval
+  	clearInterval(timer)
 
   // todo: remove the dom element targeted by $("#sub-wrapper h2")
   //       (this is what we created in the start() function above)
